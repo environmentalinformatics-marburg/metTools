@@ -27,6 +27,7 @@ readMetData <- function(filepath, ...){
 
   # Define grouping by year
   df_met$g_a <- substr(as.character(df_met$datetime), 1, 4)
+  df_met$g_a <- as.numeric(df_met$g_a)
 
   # Define grouping by exploratory and land cover type
   df_met$g_belc <- substr(as.character(df_met$plotID), 1, 3)
