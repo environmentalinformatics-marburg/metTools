@@ -20,6 +20,7 @@ GDD <- function(tmax,tmin,base=10){
 }
 
 #' @rdname GDD
+#' @export Gsum
 Gsum <- function(tmean,base=5){
   result <- 0
   result[tmean>=base] <- tmean[tmean>=base]-base
@@ -27,6 +28,7 @@ Gsum <- function(tmean,base=5){
 }
 
 #' @rdname GDD
+#' @export Coldsum
 Coldsum <- function(tmean,base=0){
   result <- 0
   result[tmean < base] <- abs(result[tmean < base]-base)
