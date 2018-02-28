@@ -16,4 +16,3 @@ analysis studies.
 Thomas Nauss
 }
 \keyword{package}
-
