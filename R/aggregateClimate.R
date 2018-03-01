@@ -65,6 +65,7 @@ aggregateClimate <- function(dat,dts,plotID,variable,fun,agg="month"){
   if(agg=="year"){
     result <- data.frame("Plot"= df$Group.1, "Date"= df$Group.2,
                          unlist(result))
+    names(result)[3] <- paste0("yearly_",variable)
   }else{
     result <- data.frame(unique(df[,1:2]),result)
   }
