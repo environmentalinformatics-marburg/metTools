@@ -24,9 +24,17 @@ be_io_met_hourly <- function(filepath, ...){
   # Define grouping by exploratory and land cover type
   df_met$g_belc <- substr(as.character(df_met$plotID), 1, 3)
 
+  # Define grouping by exploratory, land cover type and day
+  df_met$g_belcd <- paste0(substr(as.character(df_met$plotID), 1, 3),
+                           "_", substr(as.character(df_met$datetime), 9, 10))
+
   # Define grouping by exploratory, land cover type and month
   df_met$g_belcm <- paste0(substr(as.character(df_met$plotID), 1, 3),
                            "_", substr(as.character(df_met$datetime), 6, 7))
+
+  # Define grouping by plot and day
+  df_met$g_pd <- paste0(as.character(df_met$plotID), "_",
+                        substr(as.character(df_met$datetime), 9, 10))
 
   # Define grouping by plot and month
   df_met$g_pm <- paste0(as.character(df_met$plotID), "_",
@@ -36,7 +44,7 @@ be_io_met_hourly <- function(filepath, ...){
   df_met$g_pa <- paste0(as.character(df_met$plotID), "_",
                         substr(as.character(df_met$datetime), 1, 4))
 
-  df_met$datetime = strptime(df_met$datetime, format = "%Y-%m-%d HH:mm")
+  df_met$datetime = strptime(df_met$datetime, format = "%Y-%m-%dT%H")
   colnames(df_met)[which(colnames(df_met) == "plotID")] = "EPID"
   return(df_met)
 }
