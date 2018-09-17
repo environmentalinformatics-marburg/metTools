@@ -44,7 +44,7 @@ be_io_met_hourly <- function(filepath, ...){
   df_met$g_pa <- paste0(as.character(df_met$plotID), "_",
                         substr(as.character(df_met$datetime), 1, 4))
 
-  df_met$datetime = strptime(df_met$datetime, format = "%Y-%m-%dT%H")
+  df_met$datetime = strptime(df_met$datetime, format = "%Y-%m-%dT%H", tz = "UTC")
   colnames(df_met)[which(colnames(df_met) == "plotID")] = "EPID"
   return(df_met)
 }
